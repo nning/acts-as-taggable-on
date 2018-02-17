@@ -194,7 +194,7 @@ module ActsAsTaggableOn::Taggable
       value = new_list.is_a?(Array) ? ActsAsTaggableOn::TagList.new(new_list) : new_list
       attrib = "#{context.to_s.singularize}_list"
 
-      @changed_attributes ||= attributes_changed_by_setter.reverse_merge(mutations_from_database.changed_values)
+      @changed_attributes ||= changed_attributes.reverse_merge(mutations_from_database.changed_values)
 
       if changed_attributes.include?(attrib)
         # The attribute already has an unsaved change.
